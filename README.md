@@ -37,10 +37,12 @@
 ```
 project2/
 ├── index.html
-├── styles.css
-├── script.js
 ├── images/
 │   └── logo.jpeg
+├── css/
+│   └── styles.css
+├── js/
+│   └── script.js
 ├── documents/
 │   └── [PDF files]
 └── Databases/
