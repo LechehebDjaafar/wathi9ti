@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}لوحة التحكم - منصة الأساتذة{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h2>لوحة التحكم</h2>
+    
+    <div class="welcome-card">
+        <h3>مرحباً بك، {{ teacher.name }}</h3>
+        <p>آخر تسجيل دخول: {{ session.get('last_login', 'لم يسجل') }}</p>
+    </div>
+    
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon">📝</div>
+            <div class="stat-info">
+                <h4>طلبات الاستمارات</h4>
+                <div class="stat-details">
+                    <span class="badge pending">{{ pending_requests }} قيد الانتظار</span>
+                    <span class="badge approved">{{ approved_requests }} تمت الموافقة</span>
+                    <span class="badge rejected">{{ rejected_requests }} مرفوض</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon">📫</div>
+            <div class="stat-info">
+                <h4>البريد</h4>
+                <p>{{ unread_messages }} رسائل غير مقروءة</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="quick-actions">
+        <h3>إجراءات سريعة</h3>
+        <div class="buttons-container">
+            <a href="{{ url_for('forms') }}" class="action-btn">طلب استمارة جديدة</a>
+            <a href="{{ url_for('mail') }}" class="action-btn">عرض الرسائل</a>
+            <a href="{{ url_for('profile') }}" class="action-btn">تحديث الملف الشخصي</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

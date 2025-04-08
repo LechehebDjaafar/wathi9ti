@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}الملف الشخصي - منصة الأساتذة{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h2>الملف الشخصي</h2>
+    
+    <form method="POST" action="{{ url_for('profile') }}" class="profile-form">
+        <div class="form-section">
+            <h3>المعلومات الشخصية</h3>
+            
+            <div class="form-group">
+                <label for="name">الاسم الكامل</label>
+                <input type="text" id="name" name="name" value="{{ teacher.name }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" value="{{ teacher.email }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">رقم الهاتف</label>
+                <input type="tel" id="phone" name="phone" value="{{ teacher.phone }}">
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h3>المعلومات المهنية</h3>
+            
+            <div class="form-group">
+                <label for="teaching_years">سنوات التدريس</label>
+                <input type="text" id="teaching_years" name="teaching_years" value="{{ teacher.teaching_years }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="subjects">المواد التي تدرسها</label>
+                <textarea id="subjects" name="subjects" rows="3">{{ teacher.subjects }}</textarea>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h3>معلومات الحساب</h3>
+            
+            <div class="form-group">
+                <label for="username">اسم المستخدم</label>
+                <input type="text" id="username" value="{{ teacher.username }}" disabled>
+                <small>لا يمكن تغيير اسم المستخدم. للتغيير يرجى التواصل مع الإدارة.</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="join_date">تاريخ إنشاء الحساب</label>
+                <input type="text" id="join_date" value="{{ teacher.join_date.strftime('%Y-%m-%d') }}" disabled>
+            </div>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">حفظ التغييرات</button>
+            <button type="reset" class="btn-secondary">إلغاء</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
